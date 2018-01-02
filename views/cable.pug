@@ -1,0 +1,96 @@
+extends layout
+
+block deviceKeys
+  div.container
+    div.row
+      div#KEY_POWER.col-xs-3.col-sm-3.col-md-3.col-lg-3.btn.btn-danger.text-center 
+        span.glyphicon.glyphicon-off
+      div#KEY_GUIDE.col-xs-3.col-sm-3.col-md-3.col-lg-3.btn.btn-primary.text-center GUIDE
+      div#KEY_MENU.col-xs-3.col-sm-3.col-md-3.col-lg-3.btn.btn-primary.text-center MENU
+      div#KEY_INFO.col-xs-3.col-sm-3.col-md-3.col-lg-3.btn.btn-primary.text-center INFO
+    div.row
+      div#KEY_DAY_PLUS.col-xs-3.col-sm-3.col-md-3.col-lg-3.btn.btn-default.text-center DAY 
+        span.glyphicon.glyphicon-plus
+      div.col-xs-2.col-sm-2.col-md-2.col-lg-2 
+      div#KEY_UP.col-xs-2.col-sm-2.col-md-2.col-lg-2.btn.btn-default.text-center
+        span.glyphicon.glyphicon-triangle-top
+      div.col-xs-2.col-sm-2.col-md-2.col-lg-2     
+      div#KEY_PAGE_PLUS.col-xs-3.col-sm-3.col-md-3.col-lg-3.btn.btn-default.text-center PG 
+        span.glyphicon.glyphicon-plus
+    div.row
+      div#KEY_DAY_MINUS.col-xs-3.col-sm-3.col-md-3.col-lg-3.btn.btn-default.text-center DAY 
+        span.glyphicon.glyphicon-minus
+      div#KEY_LEFT.col-xs-2.col-sm-2.col-md-2.col-lg-2.btn.btn-default.text-center
+        span.glyphicon.glyphicon-triangle-left
+      div#KEY_OK.col-xs-2.col-sm-2.col-md-2.col-lg-2.btn.btn-primary.text-center 
+        span.glyphicon.glyphicon-ok
+      div#KEY_RIGHT.col-xs-2.col-sm-2.col-md-2.col-lg-2.btn.btn-default.text-center
+        span.glyphicon.glyphicon-triangle-right
+      div#KEY_PAGE_MINUS.col-xs-3.col-sm-3.col-md-3.col-lg-3.btn.btn-default.text-center PG       
+        span.glyphicon.glyphicon-minus
+    div.row      
+      div#KEY_SETTINGS.col-xs-3.col-sm-3.col-md-3.col-lg-3.btn.btn-default.text-center SETTINGS
+      div.col-xs-2.col-sm-2.col-md-2.col-lg-2  
+      div#KEY_DOWN.col-xs-2.col-sm-2.col-md-2.col-lg-2.btn.btn-default.text-center
+        span.glyphicon.glyphicon-triangle-bottom
+      div.col-xs-2.col-sm-2.col-md-2.col-lg-2
+      div#KEY_EXIT.col-xs-3.col-sm-3.col-md-3.col-lg-3.btn.btn-default.text-center EXIT    
+    div.row
+      div#KEY_YELLOW.col-xs-3.col-sm-3.col-md-3.col-lg-3.btn.btn-warning.text-center A
+      div#KEY_BLUE.col-xs-3.col-sm-3.col-md-3.col-lg-3.btn.btn-primary.text-center B
+      div#KEY_RED.col-xs-3.col-sm-3.col-md-3.col-lg-3.btn.btn-danger.text-center C
+      div#KEY_GREEN.col-xs-3.col-sm-3.col-md-3.col-lg-3.btn.btn-success.text-center D
+    div.row
+      div#ALT_tv_KEY_VOLUME_UP.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center VOL 
+        span.glyphicon.glyphicon-chevron-up 
+      div.col-xs-4.col-sm-4.col-md-4.col-lg-4
+      div#KEY_CHANNEL_UP.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center CH 
+        span.glyphicon.glyphicon-chevron-up
+    div.row
+      div#ALT_tv_KEY_VOLUME_DOWN.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center VOL 
+        span.glyphicon.glyphicon-chevron-down
+      div#KEY_ON_DEMAND.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-primary.text-center ON DEMAND 
+      div#KEY_CHANNEL_DOWN.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center CH 
+        span.glyphicon.glyphicon-chevron-down
+    div.row
+      div#ALT_tv_KEY_MUTE.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center MUTE 
+        span.glyphicon.glyphicon-volume-off
+      div#KEY_FAVORITE_CHANNEL.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center FAV 
+        span.glyphicon.glyphicon-heart-empty
+      div#KEY_LAST.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center LAST 
+    div.row
+      div#KEY_RETURN.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center RETURN
+      div#KEY_LIST.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-success.text-center LIST 
+        span.glyphicon.glyphicon-list
+      div#KEY_LIVE.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center LIVE 
+    div.row
+      div#KEY_BACKWARD.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 
+        span.glyphicon.glyphicon-backward
+      div#KEY_PLAY.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center  
+        span.glyphicon.glyphicon-play
+      div#KEY_FORWARD.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 
+        span.glyphicon.glyphicon-forward
+    div.row
+      div#KEY_STOP.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center   
+        span.glyphicon.glyphicon-stop
+      div#KEY_PAUSE.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 
+        span.glyphicon.glyphicon-pause
+      div#KEY_RECORD.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 
+        span.glyphicon.glyphicon-record.text-danger
+    div.row
+      div#KEY_1.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 1
+      div#KEY_2.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 2
+      div#KEY_3.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 3
+    div.row
+      div#KEY_4.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 4
+      div#KEY_5.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 5
+      div#KEY_6.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 6
+    div.row
+      div#KEY_7.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 7
+      div#KEY_8.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 8
+      div#KEY_9.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 9
+    div.row
+      div#KEY_STAR.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 
+        span.glyphicon.glyphicon-asterisk
+      div#KEY_0.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center 0
+      div#KEY_HASH.col-xs-4.col-sm-4.col-md-4.col-lg-4.btn.btn-default.text-center #     

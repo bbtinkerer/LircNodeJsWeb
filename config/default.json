@@ -1,0 +1,19 @@
+{
+  "devices":{
+    "tv":{
+      "title": "TV - Samsung",
+      "label": "TV",
+      "device": "SamsungTv"
+    },
+    "dvd":{
+      "title": "DVD - Magnavox",
+      "label": "DVD",
+      "device": "MagnavoxDvd"
+    },
+    "cable":{
+      "title": "Cable Box",
+      "label": "CABLE",
+      "device": "CableBox"
+    }
+  }
+}

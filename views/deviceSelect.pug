@@ -1,0 +1,9 @@
+div.container
+  div.row
+    div.col-xs-12.col-sm-12.col-md-12.col-lg-12.bg-info.text-center 
+      h1 #{title}
+  div.row
+    each key in Object.keys(devices)
+      div(id='device-'+key, class=' col-xs-'+colWidth+' col-sm-'+colWidth+' col-md-'+colWidth+' col-lg-'+colWidth+' btn btn-info text-center') #{devices[key].label}
+  div
+    input#currentDevice(type='hidden', value=device)

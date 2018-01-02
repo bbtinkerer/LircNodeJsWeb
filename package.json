@@ -1,0 +1,29 @@
+{
+  "name": "lircnodejsweb",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": { 
+    "start": "/opt/nodejs/bin/nodemon ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "bootstrap": "^3.3.7",
+    "config": "^1.29.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "jquery": "^3.2.1",
+    "morgan": "~1.9.0",
+    "pug": "2.0.0-beta11",
+    "serve-favicon": "~2.4.5"
+  },
+  "author": {
+    "name": "bbtinkerer",
+    "email": "bbtinkerer@users.noreply.github.com"
+  },
+  "homepage": "https://github.com/bbtinkerer/LircNodeJsWeb#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bbtinkerer/LircNodeJsWeb.git"
+  }
+}
