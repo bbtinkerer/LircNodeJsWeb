@@ -28,3 +28,8 @@ node_modules
 
 # Debug log from npm
 npm-debug.log
+
+# user config
+config/default.json
+config/production.json
+
