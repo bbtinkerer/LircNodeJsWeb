@@ -22,7 +22,7 @@ mkdir nodejs
 git clone https://github.com/bbtinkerer/LircNodeJsWeb.git
 cd nodejs/LircNodeJsWeb/config/ 
 cp default.example.json default.json
-cp production.example.json default.json
+cp production.example.json production.json
 cd ..
 npm install
 ```
