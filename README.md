@@ -14,13 +14,16 @@ Web based universal IR remote controller using [LIRC](http://www.lirc.org) and [
 
 ## Installation
 
-Clone this project to /home/pi/nodejs/LircNodeJsWeb and download required depencencies.
+Clone this project to /home/pi/nodejs/LircNodeJsWeb, download required depencencies, and copy the example config files.
 
 ```bash
 cd ~
 mkdir nodejs
 git clone https://github.com/bbtinkerer/LircNodeJsWeb.git
-cd nodejs/LircNodeJs
+cd nodejs/LircNodeJsWeb/config/ 
+cp default.example.json default.json
+cp production.example.json default.json
+cd ..
 npm install
 ```
 
