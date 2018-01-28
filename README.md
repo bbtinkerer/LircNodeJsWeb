@@ -165,7 +165,7 @@ Here is my try at the schema for the configuration file, hopefully it makes sens
               "delay": {
                 "description": "Time in milliseconds to wait after executing irsend command.",
                 "type": "string"
-              },
+              }
             }
           }
         }
