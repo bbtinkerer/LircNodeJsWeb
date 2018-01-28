@@ -22,6 +22,14 @@ $(document).ready(function(){
       postKey('/devices/'+device+'/SEND_ONCE/' + key);
     }); 
   });
+
+  $('div[id^="MACRO_"]').each(function(){
+    var id = $(this).attr('id');
+    var macro = id.match(/MACRO_(.*)/)[1];
+    $(this).on('click', function (){
+      postKey('/macro/'+macro);
+    });
+  });
 });
 
 function postKey(route){

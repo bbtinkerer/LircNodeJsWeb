@@ -4,7 +4,7 @@ By bbtinkerer (<http://bb-tinkerer.blogspot.com/>)
 
 ## Description
 
-Web based universal IR remote controller using [LIRC](http://www.lirc.org) and [Node.js](https://nodejs.org/en/). Control your TV, cable box, media center, and pretty much anything that has an IR remote control from your computers', tablets', phones' browser.
+Web based universal IR remote controller using [LIRC](http://www.lirc.org) and [Node.js](https://nodejs.org/en/). Control your TV, cable box, media center, and pretty much anything that has an IR remote control from your computers', tablets', phones' browser. Also define your own macros so you can turn on all devices in one button. Make a dumb TV almost act like a smart TV by writing macros to go to different inputs. Not sure what sound level someone left the speakers at? Write a macro to turn on the device and spam the mute key for a second or two.
 
 ## Requirements
 
@@ -22,7 +22,7 @@ mkdir nodejs
 git clone https://github.com/bbtinkerer/LircNodeJsWeb.git
 cd nodejs/LircNodeJsWeb/config/ 
 cp default.example.json default.json
-cp production.example.json default.json
+cp production.example.json production.json
 cd ..
 npm install
 ```
@@ -55,7 +55,7 @@ KEY_WHATEVER             0x35AD
 ### Node.js config file
 
 Configuration files are in the config folder. The files are:
-* default.json - Main configuration file to control what is displayed and map device buttons to correct template file. 
+* default.json - Main configuration file to control what is displayed, map device buttons to correct template file, and define macros. 
 * production.json - Empty but needed when running in production mode.
 
 The website is split into 3 sections.
@@ -83,6 +83,27 @@ You will need to edit default.json to configure the Device Selection section. Fo
       "label": "CABLE",
       "device": "CableBox"
     }
+  },
+  "macros":{
+    "watch_tv": [
+      { "device": "tv",    "directive": "SEND_ONCE", "key": "KEY_POWER" },
+      { "device": "cable", "directive": "SEND_ONCE", "key": "KEY_POWER" }
+    ],
+    "game_input":[
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_TV",     "delay": 1000 },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_SOURCE", "delay": 2000 },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_SOURCE", "delay": 2000 },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_SOURCE", "delay": 2000 },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_SOURCE", "delay": 2000 },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_SOURCE" },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_ENTER"}
+    ],
+    "toon_tv":[
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_TV" },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_3" },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_5" },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_ENTER" }
+    ]
   }
 }
 ```
@@ -94,12 +115,14 @@ Here is my try at the schema for the configuration file, hopefully it makes sens
   "$schema": "http://json-schema.org/draft-06/schema#",
   "title": "Devices Configuration",
   "type": "object",
+  "required": ["devices"],
   "properties":{
     "devices":{
       "patternProperties": {
         "[A-Za-z]+":{
           "title": "Device",
           "type": "object",
+          "required": ["title", "label", "device"],
           "properties": {
             "title":{
               "description": "Text to display in the Header section after selecting a device.",
@@ -117,6 +140,36 @@ Here is my try at the schema for the configuration file, hopefully it makes sens
         }
       },
       "description": "Property denotes the type of device and the .pug filename to use for the device."
+    },
+    "macros":{
+      "patternProperties": {
+        "[A-Za-z]+":{
+          "title": "Macro",
+          "type": "array",
+          "items:" {
+            "type": "object",
+            "required": ["device", "directive", "key"],
+            "properties":{
+              "device": {
+                "description": "The name used in the LIRC configuration file for the device.",
+                "type": "string"
+              },
+              "directive": {
+                "description": "Directive to give to irsend.",
+                "type": "string"
+              },
+              "key": {
+                "description": "Button to press",
+                "type": "string"
+              },
+              "delay": {
+                "description": "Time in milliseconds to wait after executing irsend command.",
+                "type": "string"
+              },
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -182,6 +235,40 @@ For example a cable box  does not have volume controls but you want volume contr
 Open your browser's development tools console while viewing the site. Clicking on a button should show something along the line of "{result: "success"}" when the button is correctly mapped to an LIRC remote button. 
 
 An error will show something like "{result: "unknown command: "KEY_DASH""}". That means there is no button named "KEY_DASH" in the LIRC configuration file for that device. Either update your template file or the LIRC configuration file.
+
+### Macros
+Macros allow you to sequence any number of commands. Define macros in default.json in the macro section. A macro is defined by naming the macro and giving it an array of command options. You can add a delay in milliseconds before executing the next command. This is handy for some devices that take some time to process before accepting more commands. For example, my TV needs to think a bit when the source button has been pressed before the TV will respond again to any other button.
+
+Following is the sample macros included in the project:
+
+```json
+...
+  "macros":{
+    "watch_tv": [
+      { "device": "tv",    "directive": "SEND_ONCE", "key": "KEY_POWER" },
+      { "device": "cable", "directive": "SEND_ONCE", "key": "KEY_POWER" }
+    ],
+    "game_input":[
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_TV",     "delay": 1000 },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_SOURCE", "delay": 2000 },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_SOURCE", "delay": 2000 },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_SOURCE", "delay": 2000 },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_SOURCE", "delay": 2000 },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_SOURCE" },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_ENTER"}
+    ],
+    "toon_tv":[
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_TV" },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_3" },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_5" },
+      { "device": "tv", "directive": "SEND_ONCE", "key": "KEY_ENTER" }
+    ]
+  }
+...
+```
+
+#### Executing Macros
+To execute a macro from your page, give the button ID the value of the macro name prefixed with 'MACRO_'. For example "MACRO_watch_tv", "MACRO_game_input", and "MACRO_toon_tv".
 
 ## Usage
 
