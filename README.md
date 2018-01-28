@@ -146,7 +146,7 @@ Here is my try at the schema for the configuration file, hopefully it makes sens
         "[A-Za-z]+":{
           "title": "Macro",
           "type": "array",
-          "items:" {
+          "items": {
             "type": "object",
             "required": ["device", "directive", "key"],
             "properties":{
