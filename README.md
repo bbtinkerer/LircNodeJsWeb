@@ -19,6 +19,7 @@ Clone this project to /home/pi/nodejs/LircNodeJsWeb, download required depencenc
 ```bash
 cd ~
 mkdir nodejs
+cd nodejs
 git clone https://github.com/bbtinkerer/LircNodeJsWeb.git
 cd nodejs/LircNodeJsWeb/config/ 
 cp default.example.json default.json
