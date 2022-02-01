@@ -1,5 +1,5 @@
 var config = require('config');
-var exec = require('child_process').exec;
+var execFile = require('child_process').execFile;
 var execSync = require('child_process').execSync; // this works better for macro feature
 var util = require('util');
 var express = require('express');
@@ -11,10 +11,10 @@ var macros = config.get('macros');
 var irsendRoute = '/devices/:device/:directive/:key';
 
 var irsendRouteHandler = function(req, res){
-  var command = util.format('irsend %s %s %s', req.params.directive, devices[req.params.device].device, req.params.key);
+  var irsendArgs = [req.params.directive, devices[req.params.device].device, req.params.key];
   var result;
-  console.log('executing: ' + command);
-  exec(command, (error, stdout, stderr) => {
+  console.log('executing: irsend ' + irsendArgs.join(" "));
+  execFile("irsend", irsendArgs, (error, stdout, stderr) => {
     result = stdout.trim();
     // success returns a blank string, I want to return something back to the browswer
     if(!result){
